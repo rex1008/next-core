@@ -1,7 +1,11 @@
 import React from 'react'
 
 const fetchImg = async () => {
-  const r = await fetch("https://dog.ceo/api/breeds/image/random")
+  const r = await fetch("https://dog.ceo/api/breeds/image/random", {
+    next: {
+      tags: ["dog"]
+    }
+  })
   return r.json()
 }
 
