@@ -1,43 +1,22 @@
-"use client"
+import { addTodo, getTodos } from "@/action";
 
-import React, { useEffect, useState } from 'react'
+const userId = "2333"
 
-export default function Page() {
-  const [todos, setTodos] = useState([])
+export default async function Page() {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const r = await fetch("http://localhost:3000/api/todos")
-      const { data } = await r.json()
-      // console.log(data)
-      setTodos(data)
-    }
-  
-    fetchData()
-  }, [])
+  const todos = await getTodos()
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const r = await fetch("http://localhost:3000/api/todos", {
-      method: "POST",
-      body: new FormData(e.currentTarget)
-    })
-    const { data } = await r.json()
-    setTodos(data)
-  }
+  const addTodoWithExtraParam = addTodo.bind(null, userId)
 
   return (
     <div className='p-10'>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form action={addTodoWithExtraParam}>
           <input type="text" name='todo' className='border p-2' />
           <button type='submit' className='border p-2 ml-2'>提交</button>
         </form>
         <ul className='leading-8 mt-4'>
           {
-            todos.map((todo, index) => {
-              return <li key={index}>{todo}</li>
-            })
+            todos.map((todo, index) => <li key={index}>{todo}</li>)
           }
         </ul>
     </div>
