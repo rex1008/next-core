@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import { Inder } from "next/font/google";
 import "./globals.css";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
-
-const inder = Inder({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +13,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inder.className}>
-        <AntdRegistry>
-          {children}
-        </AntdRegistry>
+      <body>
+        {children}
       </body>
     </html>
   );
