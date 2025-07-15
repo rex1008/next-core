@@ -17,7 +17,7 @@ export default function SubmitForm() {
     <>
       <div className="flex">
         <form action={formAction}>
-          <input type="text" name='todo' className='border p-2' />
+          <input required type="text" name='todo' className='border p-2' />
           <SubmitButton/>
         </form>
         <ClientButton>疲惫</ClientButton>

@@ -2,6 +2,10 @@
 
 import { revalidatePath } from "next/cache"
 
+import { z } from 'zod'
+
+const schema = z.string().min(2, { message: "Must be 2 or more characters long" }).max(5, "Must be 5 or fewer characters long")
+
 const data = ["吃饭", "睡觉", " 打豆豆"]
 
 export async function getTodos() {
@@ -14,6 +18,14 @@ export async function addTodo(prevState: { message: string }, formData: FormData
 
   // 获取表单数据方式1
   const todo = formData.get("todo") as string
+
+  // 校验长度等
+  const validataFields = schema.safeParse(todo)
+  if (!validataFields.success) {
+    return {
+      message: validataFields.error.flatten().formErrors.toString()
+    }
+  }
 
   // 获取表单数据方式2
   const rawFormData = Object.fromEntries(formData)
