@@ -1,6 +1,4 @@
 import { addTodo, getTodos } from "@/action";
-import ClientButton from "@/components/client-button";
-import SubmitButton from "@/components/submit-button";
 import SubmitForm from "@/components/submit-form";
 
 const userId = "2333"
