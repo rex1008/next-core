@@ -9,8 +9,8 @@ export async function getTodos() {
   return data
 }
 
-export async function addTodo(userId: string, formData: FormData) {
-  console.log("userId", userId)
+export async function addTodo(formData: FormData) {
+  // console.log("userId", userId)
 
   // 获取表单数据方式1
   const todo = formData.get("todo") as string
