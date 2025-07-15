@@ -9,7 +9,7 @@ export async function getTodos() {
   return data
 }
 
-export async function addTodo(formData: FormData) {
+export async function addTodo(prevState: { message: string }, formData: FormData) {
   // console.log("userId", userId)
 
   // 获取表单数据方式1
@@ -25,5 +25,10 @@ export async function addTodo(formData: FormData) {
 
   // 重新验证缓存
   revalidatePath("/")
+
+  return {
+    ...prevState,
+    message: `add ${todo} success!`
+  }
   
 }
