@@ -26,7 +26,7 @@ export default async function Page(props: SnippetShowPageProps) {
       <div className='flex items-center justify-between mt-10'>
         <h1 className='font-bold text-lg'>{snippet.title}</h1>
         <div className='flex gap-4'>
-          <Link href="/snippet/1/edit" className='p-2 border border-teal-500 rounded'>Edit</Link>
+          <Link href={`/snippets/${id}/edit`} className='p-2 border border-teal-500 rounded'>Edit</Link>
           {/* <SnippetDelButton id={+id} /> */}
           <form action={deleteSnippetWithId}>
             <button className='p-2 border border-teal-500 rounded'>Delete</button>
