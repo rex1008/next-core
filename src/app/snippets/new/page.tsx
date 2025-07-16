@@ -1,4 +1,5 @@
 import { db } from '@/db'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 export default function Page() {
@@ -15,6 +16,8 @@ export default function Page() {
       }
     })
     console.log(data)
+
+    redirect("/")
   }
 
 
