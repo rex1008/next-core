@@ -15,7 +15,7 @@ export default async function Page() {
       <div className='flex flex-col gap-2 mt-5'>
         {
           snippets.map(snippet =>
-            <Link href={`/snippets/${snippet.id}`} className='flex justify-between items-center border border-teal-500 p-2 rounded'>
+            <Link key={snippet.id} href={`/snippets/${snippet.id}`} className='flex justify-between items-center border border-teal-500 p-2 rounded'>
               <span>{snippet.title}</span>
               <span>View</span>
             </Link>)
